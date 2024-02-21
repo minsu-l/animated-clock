@@ -115,7 +115,9 @@ function updateClock() {
             }, 500);
         }
     }
+    setTimeout(updateClock, 1000)
 }
 
 // updateClock();
-setInterval(updateClock, 1000);
+// setInterval(updateClock, 1000);
+updateClock();
