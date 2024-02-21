@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 * {
+    font-family: "Inter";
     color: white;
 }
 
@@ -36,4 +39,35 @@ body::before {
     display: flex;
     flex-direction: row;
     gap: 0;
+    font-size: 50px;
+    font-weight: 500;
 }
+
+.digit-container {
+    position: relative;
+    width: 65px;
+    overflow: hidden;
+}
+
+.clock {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    text-align: center;
+    /* top: 0px; */
+    /* animation: 0.5s ease-in-out 0s forwards hide; */
+}
+
+
+
+
+
+/* @keyframes hide {
+    0% {
+        top: 0px;
+    }
+    
+    100% {
+        top: -100%;
+    }
+} */
