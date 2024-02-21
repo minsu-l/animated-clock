@@ -1,137 +1,119 @@
 function updateClock() {
-    if(document.hasFocus()){
+    if(!document.hidden){
+        const cubicBezier = 'cubic-bezier(.4,0,.6,1)';
+        const showAnimation = [
+            {
+                top: '50%',
+                transform: 'rotateX(90deg)',
+                opacity: 0,
+                filter: 'blur(4px)'
+            },
+            {
+                top: '0',
+                transform: 'rotateX(0deg)',
+                opacity: 1,
+                filter: 'blur(0px)'
+            }
+        ];
+        const hideAnimation = [
+            {
+                top: '0',
+                transform: 'rotateX(0deg)',
+                opacity: 1,
+                filter: 'blur(0px)'
+            },
+            {
+                top: '-50%',
+                transform: 'rotateX(90deg)',
+                opacity: 0,
+                filter: 'blur(4px)'
+            }
+        ];
+
         const clockHr = document.querySelector(".hr"),
-        clockMin = document.querySelector(".min"),
-        clockSec = document.querySelector(".sec");
-    const writtenHr = document.querySelector(".hr").innerHTML, 
-        writtenMin = document.querySelector(".min").innerHTML,
-        writtenSec = document.querySelector(".sec").innerHTML;
-    console.log(`${writtenHr}:${writtenMin}:${writtenSec}`);
-    const d = new Date();
-    const hr = ("0" + d.getHours()).slice(-2), 
-        min = ("0" + d.getMinutes()).slice(-2), 
-        sec = ("0" + d.getSeconds()).slice(-2);
-    console.log(`${hr}:${min}:${sec}`);
-    if(writtenHr != hr){
-        let hrElement = document.createElement("span");
-        hrElement.innerHTML = hr;
-        hrElement.className = "clock hr";
+            clockMin = document.querySelector(".min"),
+            clockSec = document.querySelector(".sec");
+        const writtenHr = document.querySelector(".hr").innerHTML, 
+            writtenMin = document.querySelector(".min").innerHTML,
+            writtenSec = document.querySelector(".sec").innerHTML;
+        console.log(`${writtenHr}:${writtenMin}:${writtenSec}`);
+        const d = new Date();
+        const hr = ("0" + d.getHours()).slice(-2), 
+            min = ("0" + d.getMinutes()).slice(-2), 
+            sec = ("0" + d.getSeconds()).slice(-2);
+        console.log(`${hr}:${min}:${sec}`);
+        if(writtenHr != hr){
+            let hrElement = document.createElement("span");
+            hrElement.innerHTML = hr;
+            hrElement.className = "clock hr";
 
-        clockHr.insertAdjacentElement('afterend', hrElement);
-        hrElement.animate(
-            [
+            clockHr.insertAdjacentElement('afterend', hrElement);
+            hrElement.animate(showAnimation,
                 {
-                    top: '100%'
-                },
-                {
-                    top: '0'
+                    duration: 500,
+                    fill: "forwards",
+                    easing: cubicBezier
                 }
-            ],
-            {
-                duration: 500,
-                fill: "forwards",
-                easing: 'ease-in-out'
-            }
-        )
-        clockHr.animate(
-            [
+            )
+            clockHr.animate(hideAnimation,
                 {
-                    top: '0'
-                },
-                {
-                    top: '-100%'
+                    duration: 400,
+                    fill: "forwards",
+                    easing: cubicBezier
                 }
-            ],
-            {
-                duration: 500,
-                fill: "forwards",
-                easing: 'ease-in-out'
-            }
-        )
-        setTimeout(() => {
-            clockHr.remove();
-        }, 500);
-    }
-    if(writtenMin != min){
-        let minElement = document.createElement("span");
-        minElement.innerHTML = min;
-        minElement.className = "clock min";
+            )
+            setTimeout(() => {
+                clockHr.remove();
+            }, 500);
+        }
+        if(writtenMin != min){
+            let minElement = document.createElement("span");
+            minElement.innerHTML = min;
+            minElement.className = "clock min";
 
-        clockMin.insertAdjacentElement('afterend', minElement);
-        minElement.animate(
-            [
+            clockMin.insertAdjacentElement('afterend', minElement);
+            minElement.animate(showAnimation,
                 {
-                    top: '100%'
-                },
-                {
-                    top: '0'
+                    duration: 500,
+                    fill: "forwards",
+                    easing: cubicBezier
                 }
-            ],
-            {
-                duration: 500,
-                fill: "forwards",
-                easing: 'ease-in-out'
-            }
-        )
-        clockMin.animate(
-            [
+            )
+            clockMin.animate(hideAnimation,
                 {
-                    top: '0'
-                },
-                {
-                    top: '-100%'
+                    duration: 400,
+                    fill: "forwards",
+                    easing: cubicBezier
                 }
-            ],
-            {
-                duration: 500,
-                fill: "forwards",
-                easing: 'ease-in-out'
-            }
-        )
-        setTimeout(() => {
-            clockMin.remove();
-        }, 500);
-    }
-    if(writtenSec != sec){
-        let secElement = document.createElement("span");
-        secElement.innerHTML = sec;
-        secElement.className = "clock sec";
+            )
+            setTimeout(() => {
+                clockMin.remove();
+            }, 500);
+        }
+        if(writtenSec != sec){
+            let secElement = document.createElement("span");
+            secElement.innerHTML = sec;
+            secElement.className = "clock sec";
 
-        clockSec.insertAdjacentElement('afterend', secElement);
-        secElement.animate(
-            [
+            clockSec.insertAdjacentElement('afterend', secElement);
+            secElement.animate(showAnimation,
                 {
-                    top: '100%'
-                },
-                {
-                    top: '0'
+                    duration: 400,
+                    fill: "forwards",
+                    easing: cubicBezier
                 }
-            ],
-            {
-                duration: 500,
-                fill: "forwards",
-                easing: 'ease-in-out'
-            }
-        )
-        clockSec.animate(
-            [
+            )
+            clockSec.animate(hideAnimation,
                 {
-                    top: '0'
-                },
-                {
-                    top: '-100%'
+                    duration: 400,
+                    fill: "forwards",
+                    easing: cubicBezier
                 }
-            ],
-            {
-                duration: 500,
-                fill: "forwards",
-                easing: 'ease-in-out'
-            }
-        )
-        setTimeout(() => {
-            clockSec.remove();
-        }, 500);
-    }
+            )
+            setTimeout(() => {
+                clockSec.remove();
+            }, 500);
+        }
     }
 }
 
