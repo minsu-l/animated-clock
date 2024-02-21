@@ -41,6 +41,7 @@ body::before {
     gap: 0;
     font-size: 50px;
     font-weight: 500;
+    user-select: none;
 }
 
 .digit-container {
