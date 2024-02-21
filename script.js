@@ -1,5 +1,6 @@
 function updateClock() {
-    const clockHr = document.querySelector(".hr"),
+    if(document.hasFocus()){
+        const clockHr = document.querySelector(".hr"),
         clockMin = document.querySelector(".min"),
         clockSec = document.querySelector(".sec");
     const writtenHr = document.querySelector(".hr").innerHTML, 
@@ -130,6 +131,7 @@ function updateClock() {
         setTimeout(() => {
             clockSec.remove();
         }, 500);
+    }
     }
 }
 
