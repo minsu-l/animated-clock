@@ -36,12 +36,10 @@ function updateClock() {
         const writtenHr = document.querySelector(".hr").innerHTML, 
             writtenMin = document.querySelector(".min").innerHTML,
             writtenSec = document.querySelector(".sec").innerHTML;
-        console.log(`${writtenHr}:${writtenMin}:${writtenSec}`);
         const d = new Date();
         const hr = ("0" + d.getHours()).slice(-2), 
             min = ("0" + d.getMinutes()).slice(-2), 
             sec = ("0" + d.getSeconds()).slice(-2);
-        console.log(`${hr}:${min}:${sec}`);
         if(writtenHr != hr){
             let hrElement = document.createElement("span");
             hrElement.innerHTML = hr;
@@ -118,6 +116,9 @@ function updateClock() {
     setTimeout(updateClock, 1000)
 }
 
-// updateClock();
-// setInterval(updateClock, 1000);
+const time = new Date();
+document.querySelector(".hr").innerHTML = ("0" + time.getHours()).slice(-2);
+document.querySelector(".min").innerHTML = ("0" + time.getMinutes()).slice(-2);
+document.querySelector(".sec").innerHTML = ("0" + time.getSeconds()).slice(-2);
+
 updateClock();
